@@ -1,16 +1,18 @@
 # EC2 instance standalone
 # -----------
 # resource "aws_instance" "sharmi_instance" {
-#   ami           = "ami-00c39f71452c08778"
+#   ami           = "ami-0862be96e41dcbf74"
 #   instance_type = "t2.micro"
+#   key = "tony-key"
 # }
 # -----------
 
 # ASG with Launch template
 resource "aws_launch_template" "sh_ec2_launch_templ" {
   name_prefix   = "sh_ec2_launch_templ"
-  image_id      = "ami-00c39f71452c08778" #specific for each region
+  image_id      = "ami-0862be96e41dcbf74" #specific for each region
   instance_type = "t2.micro"
+  key = "tony-key"
   user_data     = filebase64("user_data.sh")
 
   network_interfaces {
